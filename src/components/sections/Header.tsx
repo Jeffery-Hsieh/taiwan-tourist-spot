@@ -1,0 +1,93 @@
+import React from "react";
+import { Link as ReachLink } from "react-router-dom";
+import {
+  Box,
+  Flex,
+  Text,
+  Link,
+  FlexOptions,
+  TextProps,
+} from "@chakra-ui/react";
+import Logo from "../icons/Logo";
+import { CircleIcon, RectangleIcon, TriangleIcon } from "../icons";
+
+type MenuItemProps = TextProps & {
+  to?: string;
+  isActive?: boolean;
+  isLast?: boolean;
+  icon?: any;
+  children: React.ReactChild;
+};
+
+const MenuItem = (props: MenuItemProps) => {
+  const { children, to = "/", isActive, isLast, icon, ...rest } = props;
+  return (
+    <Flex
+      justifyContent={{ base: "space-between", md: "flex-end" }}
+      mr={{ base: 0, sm: isLast ? 0 : 8 }}
+      {...rest}
+    >
+      {icon && (
+        <Box display={{ base: "none", md: "block" }} mr={{ base: 0, sm: 2 }}>
+          {icon}
+        </Box>
+      )}
+      <Link as={ReachLink} to={to}>
+        <Text
+          color={{ base: isActive ? "pink.500" : "gray.500", md: "inherit" }}
+        >
+          {children}
+        </Text>
+      </Link>
+    </Flex>
+  );
+};
+
+type HeaderProps = FlexOptions & {};
+
+const Header = (props: HeaderProps) => (
+  <Flex
+    as="nav"
+    align="center"
+    justify="space-between"
+    wrap="wrap"
+    w="100%"
+    mb={8}
+    p={8}
+    bg="white"
+    {...props}
+  >
+    <Flex
+      justifyContent="center"
+      alignItems="center"
+      flexBasis={{ base: "100%", md: "auto" }}
+    >
+      <Logo
+        w="90px"
+        h="52px"
+        color={["white", "white", "primary.500", "primary.500"]}
+      />
+    </Flex>
+
+    <Box mt={{ base: 3, md: 0 }} flexBasis={{ base: "100%", md: "auto" }}>
+      <Flex
+        align={["center", "center", "center", "center"]}
+        justify={["space-between", "flex-end"]}
+        direction="row"
+        pt={[4, 4, 0, 0]}
+      >
+        <MenuItem to="/" color="pink.500" icon={<TriangleIcon />}>
+          熱門景點
+        </MenuItem>
+        <MenuItem to="/how" color="yellow.500" icon={<RectangleIcon />}>
+          美食住宿
+        </MenuItem>
+        <MenuItem to="/faetures" color="green.500" icon={<CircleIcon />}>
+          景點交通
+        </MenuItem>
+      </Flex>
+    </Box>
+  </Flex>
+);
+
+export default Header;
