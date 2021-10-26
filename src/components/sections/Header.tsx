@@ -70,10 +70,10 @@ const Header = (props: HeaderProps) => (
     <Flex
       w="100%"
       align={["center", "center", "center", "center"]}
-      justify={["space-between", "flex-end"]}
+      justify={{ base: "space-between", md: "flex-end" }}
       direction="row"
-      boxShadow="0px 2px 4px rgba(13, 11, 12, 0.2)"
-      borderRadius="md"
+      boxShadow={{ base: "0px 2px 4px rgba(13, 11, 12, 0.2)", md: "none" }}
+      borderRadius={{ base: "md", md: "none" }}
       mx={[4, 4, 0, 0]}
       px={[8, 8, 0, 0]}
       py={[2.5, 2.5, 0, 0]}
