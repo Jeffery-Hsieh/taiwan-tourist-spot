@@ -8,8 +8,7 @@ import {
   FlexOptions,
   TextProps,
 } from "@chakra-ui/react";
-import Logo from "../icons/Logo";
-import { CircleIcon, RectangleIcon, TriangleIcon } from "../icons";
+import { LogoIcon, CircleIcon, RectangleIcon, TriangleIcon } from "../icons";
 
 type MenuItemProps = TextProps & {
   to?: string;
@@ -52,9 +51,8 @@ const Header = (props: HeaderProps) => (
     justify="space-between"
     wrap="wrap"
     w="100%"
-    mb={8}
-    p={8}
     bg="white"
+    mt={[4, 4, 0, 0]}
     {...props}
   >
     <Flex
@@ -62,31 +60,35 @@ const Header = (props: HeaderProps) => (
       alignItems="center"
       flexBasis={{ base: "100%", md: "auto" }}
     >
-      <Logo
+      <LogoIcon
         w="90px"
         h="52px"
         color={["white", "white", "primary.500", "primary.500"]}
       />
     </Flex>
 
-    <Box mt={{ base: 3, md: 0 }} flexBasis={{ base: "100%", md: "auto" }}>
-      <Flex
-        align={["center", "center", "center", "center"]}
-        justify={["space-between", "flex-end"]}
-        direction="row"
-        pt={[4, 4, 0, 0]}
-      >
-        <MenuItem to="/" color="pink.500" icon={<TriangleIcon />}>
-          熱門景點
-        </MenuItem>
-        <MenuItem to="/how" color="yellow.500" icon={<RectangleIcon />}>
-          美食住宿
-        </MenuItem>
-        <MenuItem to="/faetures" color="green.500" icon={<CircleIcon />}>
-          景點交通
-        </MenuItem>
-      </Flex>
-    </Box>
+    <Flex
+      w="100%"
+      align={["center", "center", "center", "center"]}
+      justify={["space-between", "flex-end"]}
+      direction="row"
+      boxShadow="0px 2px 4px rgba(13, 11, 12, 0.2)"
+      borderRadius="md"
+      mx={[4, 4, 0, 0]}
+      px={[8, 8, 0, 0]}
+      py={[2.5, 2.5, 0, 0]}
+      mt={[4, 4, 0, 0]}
+    >
+      <MenuItem to="/" color="pink.500" icon={<TriangleIcon />}>
+        熱門景點
+      </MenuItem>
+      <MenuItem to="/how" color="yellow.500" icon={<RectangleIcon />}>
+        美食住宿
+      </MenuItem>
+      <MenuItem to="/faetures" color="green.500" icon={<CircleIcon />}>
+        景點交通
+      </MenuItem>
+    </Flex>
   </Flex>
 );
 
